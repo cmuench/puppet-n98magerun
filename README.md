@@ -6,7 +6,8 @@ Exaple magento installation with n98-magerun and puppet:
 
 
 ``` puppet
-class { "n98magerun": }
+class { "n98magerun": } # downloads n98-magerun and puts it to /usr/local/bin
+
 class { "n98magerun::install":
     installation_folder => "/vagrant_data",
     db_host             => "localhost",
