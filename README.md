@@ -4,7 +4,7 @@ Currently work in progress...
 
 Example magento installation with n98-magerun and puppet:
 
-
+``` ruby
    class { "n98magerun": } # downloads n98-magerun and puts it to /usr/local/bin
 
    class { "n98magerun::install":
