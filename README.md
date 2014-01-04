@@ -19,6 +19,6 @@ Example magento installation with n98-magerun and puppet:
 Download develop version of n98-magerun:
 
     class { "n98magerun": 
-      stable => 'false'
+      stable => false
     }
 

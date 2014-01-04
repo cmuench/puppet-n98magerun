@@ -9,4 +9,5 @@ class n98magerun::install::params {
     $use_default_config_params = true
     $replace_htaccess_file = false
     $base_url = 'http://magento.local'
+    $installation_timeout = 1800
 }

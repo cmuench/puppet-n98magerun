@@ -8,7 +8,8 @@ class n98magerun::install(
     $install_sample_data       = $n98magerun::install::params::install_sample_data,
     $use_default_config_params = $n98magerun::install::params::use_default_config_params,
     $replace_htaccess_file     = $n98magerun::install::params::replace_htaccess_file,
-    $base_url                  = $n98magerun::install::params::base_url
+    $base_url                  = $n98magerun::install::params::base_url,
+    $installation_timeout      = $n98magerun::install::params::installation_timeout
 ) inherits n98magerun::install::params
 {
     require n98magerun
@@ -32,5 +33,6 @@ class n98magerun::install(
     exec { 'install magento':
         command => "/usr/bin/env php /usr/local/bin/n98-magerun.phar install --magentoVersionByName='$magento_version' --installationFolder='$installation_folder' --dbHost='$db_host' --dbUser='$db_user' --dbPass='$db_pass' --dbName='$db_name' --installSampleData='$real_install_sample_data' --useDefaultConfigParams='$real_use_default_config_params' --replaceHtaccessFile='$real_replace_htaccess_files' --baseUrl='$base_url'",
         creates => "$installation_folder/app/etc/local.xml"
+        timeout => $install_timeout
     }
 }

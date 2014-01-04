@@ -1,11 +1,11 @@
 class n98magerun(
   $php_package = 'php5-cli',
   $install_dir = '/usr/local/bin',
-  $stable      = 'true'
+  $stable      = true
 ) {
   include augeas
 
-  if $stable == 'true' {
+  if $stable {
     $download_path = 'https://raw.github.com/netz98/n98-magerun/master/n98-magerun.phar'    
   } else {
     $download_path = 'https://raw.github.com/netz98/n98-magerun/develop/n98-magerun.phar'    
