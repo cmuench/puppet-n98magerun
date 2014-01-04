@@ -1,18 +1,28 @@
 class n98magerun(
-  $php_package = 'php5-cli'
+  $php_package = 'php5-cli',
+  $install_dir = '/usr/local/bin',
+  $stable      = 'true'
 ) {
   include augeas
 
+  if $stable == 'true' {
+    $download_path = 'https://raw.github.com/netz98/n98-magerun/master/n98-magerun.phar'    
+  } else {
+    $download_path = 'https://raw.github.com/netz98/n98-magerun/develop/n98-magerun.phar'    
+  }
+   
   exec { 'download n98-magerun':
-    command => 'curl -o /usr/local/bin/n98-magerun.phar https://raw.github.com/netz98/n98-magerun/master/n98-magerun.phar',
-    creates => '/usr/local/bin/n98-magerun.phar',
+    command     => "curl -o n98-magerun.phar ${download_path}",
+    creates     => "${install_dir}/n98-magerun.phar",
+    cwd         => $install_dir,
     require     => [
       Package['curl', $php_package],
       Augeas['whitelist_phar', 'allow_url_fopen']
     ]
   }
 
-  file { '/usr/local/bin/n98-magerun.phar':
+  file { 'n98-magerun.phar':
+    path    => "${install_dir}/n98-magerun.phar",
     mode    => '0755',
     owner   => root,
     group   => root,

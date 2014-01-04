@@ -15,3 +15,10 @@ Example magento installation with n98-magerun and puppet:
         base_url            => "http://127.0.0.1:8080",
         install_sample_data => true
     }
+
+Download develop version of n98-magerun:
+
+    class { "n98magerun": 
+      stable => 'false'
+    }
+
