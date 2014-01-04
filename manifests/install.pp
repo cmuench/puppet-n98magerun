@@ -32,7 +32,7 @@ class n98magerun::install(
 
     exec { 'install magento':
         command => "/usr/bin/env php /usr/local/bin/n98-magerun.phar install --magentoVersionByName='$magento_version' --installationFolder='$installation_folder' --dbHost='$db_host' --dbUser='$db_user' --dbPass='$db_pass' --dbName='$db_name' --installSampleData='$real_install_sample_data' --useDefaultConfigParams='$real_use_default_config_params' --replaceHtaccessFile='$real_replace_htaccess_files' --baseUrl='$base_url'",
-        creates => "$installation_folder/app/etc/local.xml"
-        timeout => $install_timeout
+        creates => "$installation_folder/app/etc/local.xml",
+        timeout => $installation_timeout
     }
 }
