@@ -1,7 +1,8 @@
 class n98magerun(
   $php_package = 'php5-cli',
   $install_dir = '/usr/local/bin',
-  $stable      = true
+  $stable      = true,
+  $config_file = false
 ) {
   include augeas
 
@@ -27,6 +28,14 @@ class n98magerun(
     owner   => root,
     group   => root,
     require => Exec['download n98-magerun']
+  }
+
+  if $config_file {
+    file { '.n98-magerun.yaml':
+      path => "${install_dir}",
+      ensure => present,
+      content => "${config_file}"
+    }
   }
 
   augeas { 'whitelist_phar':
