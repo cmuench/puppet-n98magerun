@@ -32,7 +32,7 @@ class n98magerun(
 
   if $config_file {
     file { '.n98-magerun.yaml':
-      path => "${install_dir}",
+      path => "${install_dir}/.n98-magerun.yaml",
       ensure => present,
       content => "${config_file}"
     }
