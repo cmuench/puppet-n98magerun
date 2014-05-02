@@ -6,13 +6,13 @@ class n98magerun(
   include augeas
 
   if $stable {
-    $download_path = 'https://raw.github.com/netz98/n98-magerun/master/n98-magerun.phar'    
+    $download_path = 'https://raw.githubusercontent.com/netz98/n98-magerun/master/n98-magerun.phar'    
   } else {
-    $download_path = 'https://raw.github.com/netz98/n98-magerun/develop/n98-magerun.phar'    
+    $download_path = 'https://raw.githubusercontent.com/netz98/n98-magerun/develop/n98-magerun.phar'    
   }
    
   exec { 'download n98-magerun':
-    command     => "curl -o n98-magerun.phar ${download_path}",
+    command     => "curl -L -o n98-magerun.phar ${download_path}",
     creates     => "${install_dir}/n98-magerun.phar",
     cwd         => $install_dir,
     require     => [
