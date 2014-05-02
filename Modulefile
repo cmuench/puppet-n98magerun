@@ -1,5 +1,5 @@
 name 'cmuench-n98magerun'
-version '0.5.1'
+version '0.5.2'
 source 'git://github.com/cmuench/puppet-n98magerun'
 author 'Christian Münch'
 license 'MIT'
