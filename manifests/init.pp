@@ -35,7 +35,7 @@ class n98magerun(
       path => "${install_dir}/.n98-magerun.yaml",
       ensure => present,
       source => "${config_file}",
-      ownder => root,
+      owner => root,
       group => root
     }
   }
