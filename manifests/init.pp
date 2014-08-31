@@ -7,16 +7,16 @@ class n98magerun(
   include augeas
 
   if $stable {
-    $download_path = 'https://raw.githubusercontent.com/netz98/n98-magerun/master/n98-magerun.phar'    
+    $download_path = 'https://raw.githubusercontent.com/netz98/n98-magerun/master/n98-magerun.phar'
   } else {
-    $download_path = 'https://raw.githubusercontent.com/netz98/n98-magerun/develop/n98-magerun.phar'    
+    $download_path = 'https://raw.githubusercontent.com/netz98/n98-magerun/develop/n98-magerun.phar'
   }
-   
+
   exec { 'download n98-magerun':
-    command     => "curl -L -o n98-magerun.phar ${download_path}",
-    creates     => "${install_dir}/n98-magerun.phar",
-    cwd         => $install_dir,
-    require     => [
+    command => "curl -L -o n98-magerun.phar ${download_path}",
+    creates => "${install_dir}/n98-magerun.phar",
+    cwd     => $install_dir,
+    require => [
       Package['curl', $php_package],
       Augeas['whitelist_phar', 'allow_url_fopen']
     ]
@@ -32,11 +32,11 @@ class n98magerun(
 
   if $config_file {
     file { '.n98-magerun.yaml':
-      path => "${install_dir}/.n98-magerun.yaml",
       ensure => present,
-      source => "${config_file}",
-      owner => root,
-      group => root
+      path   => "${install_dir}/.n98-magerun.yaml",
+      source => $config_file,
+      owner  => root,
+      group  => root
     }
   }
 
