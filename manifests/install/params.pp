@@ -1,6 +1,6 @@
 class n98magerun::install::params {
   $installation_folder = ''
-  $magento_version = 'magento-ce-1.7.0.2'
+  $magento_version = 'magento-ce-1.9.1.1'
   $db_host = 'localhost'
   $db_user = 'root'
   $db_pass = ''
