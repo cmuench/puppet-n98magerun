@@ -19,7 +19,8 @@ class n98magerun(
     require => [
       Package['curl', $php_package],
       Augeas['whitelist_phar', 'allow_url_fopen']
-    ]
+    ],
+    path    => ['/bin/', '/usr/bin'],
   }
 
   file { 'n98-magerun.phar':
