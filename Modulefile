@@ -1,7 +1,7 @@
 name 'cmuench-n98magerun'
 version '0.5.2'
 source 'git://github.com/cmuench/puppet-n98magerun'
-author 'Christian Münch'
+author 'Christian Munch'
 license 'MIT'
 summary 'n98-magerun Magento CLI Tool'
 description 'n98-magerun Magento CLI Tool'
